@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wonders.frame.core.mybatis.dao.UserMapper">
+	<resultMap id="BaseResultMap" type="com.wonders.frame.core.mybatis.model.User">
+		<id column="_id" property="id" jdbcType="INTEGER" />
+		<result column="_username" property="username" jdbcType="VARCHAR" />
+		<result column="_password" property="password" jdbcType="VARCHAR" />
+		<result column="_last_name" property="lastName" jdbcType="VARCHAR" />
+		<result column="_first_name" property="firstName" jdbcType="VARCHAR" />
+		<result column="_lock" property="lock" jdbcType="VARCHAR" />
+		<result column="_sex" property="sex" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		_id, _username, _password, _last_name, _first_name, _lock,
+		_sex
+  </sql>
+	<select id="findOne" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		SELECT * FROM tbl_user where _id=#{id}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from tbl_user
+		where id = #{id,jdbcType=INTEGER}
+  </delete>
+	<!--
+		<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer"> select <include
+		refid="Base_Column_List" /> from tbl_user where _id =
+		#{id,jdbcType=INTEGER} </select> <delete id="deleteByPrimaryKey"
+		parameterType="java.lang.Integer"> delete from tbl_user where _id =
+		#{id,jdbcType=INTEGER} </delete> <insert id="insert"
+		parameterType="com.wonders.frame.core.mybatis.model.User"> insert into
+		tbl_user (_id, _username, _password, _last_name, _first_name, _lock,
+		_sex) values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR},
+		#{password,jdbcType=VARCHAR}, #{lastName,jdbcType=VARCHAR},
+		#{firstName,jdbcType=VARCHAR}, #{lock,jdbcType=VARCHAR},
+		#{sex,jdbcType=VARCHAR}) </insert> <insert id="insertSelective"
+		parameterType="com.wonders.frame.core.mybatis.model.User"> insert into
+		tbl_user <trim prefix="(" suffix=")" suffixOverrides=","> <if test="id
+		!= null"> _id, </if> <if test="username != null"> _username, </if> <if
+		test="password != null"> _password, </if> <if test="lastName != null">
+		_last_name, </if> <if test="firstName != null"> _first_name, </if> <if
+		test="lock != null"> _lock, </if> <if test="sex != null"> _sex, </if>
+		</trim> <trim prefix="values (" suffix=")" suffixOverrides=","> <if
+		test="id != null"> #{id,jdbcType=INTEGER}, </if> <if test="username !=
+		null"> #{username,jdbcType=VARCHAR}, </if> <if test="password !=
+		null"> #{password,jdbcType=VARCHAR}, </if> <if test="lastName !=
+		null"> #{lastName,jdbcType=VARCHAR}, </if> <if test="firstName !=
+		null"> #{firstName,jdbcType=VARCHAR}, </if> <if test="lock != null">
+		#{lock,jdbcType=VARCHAR}, </if> <if test="sex != null">
+		#{sex,jdbcType=VARCHAR}, </if> </trim> </insert> <update
+		id="updateByPrimaryKeySelective"
+		parameterType="com.wonders.frame.core.mybatis.model.User"> update tbl_user
+		<set> <if test="username != null"> _username =
+		#{username,jdbcType=VARCHAR}, </if> <if test="password != null">
+		_password = #{password,jdbcType=VARCHAR}, </if> <if test="lastName !=
+		null"> _last_name = #{lastName,jdbcType=VARCHAR}, </if> <if
+		test="firstName != null"> _first_name = #{firstName,jdbcType=VARCHAR},
+		</if> <if test="lock != null"> _lock = #{lock,jdbcType=VARCHAR}, </if>
+		<if test="sex != null"> _sex = #{sex,jdbcType=VARCHAR}, </if> </set>
+		where _id = #{id,jdbcType=INTEGER} </update> <update
+		id="updateByPrimaryKey"
+		parameterType="com.wonders.frame.core.mybatis.model.User"> update tbl_user
+		set _username = #{username,jdbcType=VARCHAR}, _password =
+		#{password,jdbcType=VARCHAR}, _last_name =
+		#{lastName,jdbcType=VARCHAR}, _first_name =
+		#{firstName,jdbcType=VARCHAR}, _lock = #{lock,jdbcType=VARCHAR}, _sex
+		= #{sex,jdbcType=VARCHAR} where _id = #{id,jdbcType=INTEGER} </update>
+	-->
+</mapper>

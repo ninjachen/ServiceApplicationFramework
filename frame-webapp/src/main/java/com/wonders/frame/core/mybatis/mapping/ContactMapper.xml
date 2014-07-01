@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wonders.frame.core.mybatis.dao.ContactMapper" >
+  <resultMap id="BaseResultMap" type="com.wonders.frame.core.mybatis.model.Contact" >
+    <id column="_id" property="id" jdbcType="INTEGER" />
+    <result column="_last_name" property="lastName" jdbcType="VARCHAR" />
+    <result column="_first_name" property="firstName" jdbcType="VARCHAR" />
+    <result column="_wk_mail" property="wkMail" jdbcType="VARCHAR" />
+    <result column="_ps_mail" property="psMail" jdbcType="VARCHAR" />
+    <result column="_home_phone" property="homePhone" jdbcType="VARCHAR" />
+    <result column="_wk_phone" property="wkPhone" jdbcType="VARCHAR" />
+    <result column="_cell_phone" property="cellPhone" jdbcType="VARCHAR" />
+    <result column="_loc" property="loc" jdbcType="VARCHAR" />
+    <result column="_zip" property="zip" jdbcType="VARCHAR" />
+    <result column="_group_id" property="groupId" jdbcType="INTEGER" />
+    <result column="_owner_id" property="ownerId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    _id, _last_name, _first_name, _wk_mail, _ps_mail, _home_phone, _wk_phone, _cell_phone, 
+    _loc, _zip, _group_id, _owner_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_contact
+    where _id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbl_contact
+    where _id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wonders.frame.core.mybatis.model.Contact" >
+    insert into tbl_contact (_id, _last_name, _first_name, 
+      _wk_mail, _ps_mail, _home_phone, 
+      _wk_phone, _cell_phone, _loc, 
+      _zip, _group_id, _owner_id
+      )
+    values (#{id,jdbcType=INTEGER}, #{lastName,jdbcType=VARCHAR}, #{firstName,jdbcType=VARCHAR}, 
+      #{wkMail,jdbcType=VARCHAR}, #{psMail,jdbcType=VARCHAR}, #{homePhone,jdbcType=VARCHAR}, 
+      #{wkPhone,jdbcType=VARCHAR}, #{cellPhone,jdbcType=VARCHAR}, #{loc,jdbcType=VARCHAR}, 
+      #{zip,jdbcType=VARCHAR}, #{groupId,jdbcType=INTEGER}, #{ownerId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wonders.frame.core.mybatis.model.Contact" >
+    insert into tbl_contact
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        _id,
+      </if>
+      <if test="lastName != null" >
+        _last_name,
+      </if>
+      <if test="firstName != null" >
+        _first_name,
+      </if>
+      <if test="wkMail != null" >
+        _wk_mail,
+      </if>
+      <if test="psMail != null" >
+        _ps_mail,
+      </if>
+      <if test="homePhone != null" >
+        _home_phone,
+      </if>
+      <if test="wkPhone != null" >
+        _wk_phone,
+      </if>
+      <if test="cellPhone != null" >
+        _cell_phone,
+      </if>
+      <if test="loc != null" >
+        _loc,
+      </if>
+      <if test="zip != null" >
+        _zip,
+      </if>
+      <if test="groupId != null" >
+        _group_id,
+      </if>
+      <if test="ownerId != null" >
+        _owner_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="lastName != null" >
+        #{lastName,jdbcType=VARCHAR},
+      </if>
+      <if test="firstName != null" >
+        #{firstName,jdbcType=VARCHAR},
+      </if>
+      <if test="wkMail != null" >
+        #{wkMail,jdbcType=VARCHAR},
+      </if>
+      <if test="psMail != null" >
+        #{psMail,jdbcType=VARCHAR},
+      </if>
+      <if test="homePhone != null" >
+        #{homePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="wkPhone != null" >
+        #{wkPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="cellPhone != null" >
+        #{cellPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="loc != null" >
+        #{loc,jdbcType=VARCHAR},
+      </if>
+      <if test="zip != null" >
+        #{zip,jdbcType=VARCHAR},
+      </if>
+      <if test="groupId != null" >
+        #{groupId,jdbcType=INTEGER},
+      </if>
+      <if test="ownerId != null" >
+        #{ownerId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wonders.frame.core.mybatis.model.Contact" >
+    update tbl_contact
+    <set >
+      <if test="lastName != null" >
+        _last_name = #{lastName,jdbcType=VARCHAR},
+      </if>
+      <if test="firstName != null" >
+        _first_name = #{firstName,jdbcType=VARCHAR},
+      </if>
+      <if test="wkMail != null" >
+        _wk_mail = #{wkMail,jdbcType=VARCHAR},
+      </if>
+      <if test="psMail != null" >
+        _ps_mail = #{psMail,jdbcType=VARCHAR},
+      </if>
+      <if test="homePhone != null" >
+        _home_phone = #{homePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="wkPhone != null" >
+        _wk_phone = #{wkPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="cellPhone != null" >
+        _cell_phone = #{cellPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="loc != null" >
+        _loc = #{loc,jdbcType=VARCHAR},
+      </if>
+      <if test="zip != null" >
+        _zip = #{zip,jdbcType=VARCHAR},
+      </if>
+      <if test="groupId != null" >
+        _group_id = #{groupId,jdbcType=INTEGER},
+      </if>
+      <if test="ownerId != null" >
+        _owner_id = #{ownerId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where _id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wonders.frame.core.mybatis.model.Contact" >
+    update tbl_contact
+    set _last_name = #{lastName,jdbcType=VARCHAR},
+      _first_name = #{firstName,jdbcType=VARCHAR},
+      _wk_mail = #{wkMail,jdbcType=VARCHAR},
+      _ps_mail = #{psMail,jdbcType=VARCHAR},
+      _home_phone = #{homePhone,jdbcType=VARCHAR},
+      _wk_phone = #{wkPhone,jdbcType=VARCHAR},
+      _cell_phone = #{cellPhone,jdbcType=VARCHAR},
+      _loc = #{loc,jdbcType=VARCHAR},
+      _zip = #{zip,jdbcType=VARCHAR},
+      _group_id = #{groupId,jdbcType=INTEGER},
+      _owner_id = #{ownerId,jdbcType=INTEGER}
+    where _id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

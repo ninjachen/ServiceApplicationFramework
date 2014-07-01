@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+	<definition name="base" template="/WEB-INF/jsp/tiles/layout.jsp">
+		<put-attribute name="title" value="FRAME" />
+		<put-attribute name="sidebar" value="/WEB-INF/jsp/tiles/sidebar.jsp" />
+		<put-attribute name="body" value="" />
+	</definition>
+
+	<definition name="#my-information" extends="base">
+		<put-attribute name="body" value="/WEB-INF/jsp/user/my-information.jsp" />
+	</definition>
+
+	<definition name="#edit-information" extends="base">
+		<put-attribute name="body" value="/WEB-INF/jsp/user/edit-information.jsp" />
+	</definition>
+	
+	<definition name="#change-password" extends="base">
+		<put-attribute name="body" value="/WEB-INF/jsp/user/change-password.jsp" />
+	</definition>
+	
+	<definition name="#list-groups" extends="base">
+		<put-attribute name="body" value="/WEB-INF/jsp/contact/list-groups.jsp" />
+	</definition>
+
+	<definition name="#list-users" extends="base">
+		<put-attribute name="body" value="/WEB-INF/jsp/user/list-users.jsp" />
+	</definition>
+
+	<definition name="#add-group" extends="base">
+		<put-attribute name="body" value="/WEB-INF/jsp/contact/add-group.jsp" />
+	</definition>
+
+	<definition name="#list-contacts" extends="base">
+		<put-attribute name="body" value="/WEB-INF/jsp/contact/list-contact.jsp" />
+	</definition>
+	
+	<definition name="#add-contact" extends="base">
+		<put-attribute name="body" value="/WEB-INF/jsp/contact/add-contact.jsp" />
+	</definition>
+
+</tiles-definitions>
